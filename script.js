@@ -21,19 +21,6 @@ function runFrame(){
     canvas.height = window.innerHeight; //set canvas size to the size of the window
     ctx.fillStyle = "#778899";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    for(var i = 0; i < cats.length; i++){
-        cats[i].displayCat();
-        if(cats[i].updateCat()){
-            var cats2 = [];
-            for(var j = 0; j < cats.length; j++){
-                if(j != i){
-                    cats2.push(cats[j]);
-                }
-            }
-            cats = cats2;
-            i--;
-        }
-    }
     for(var i = 0; i < raindrops.length; i++){
         raindrops[i].display();
         if(raindrops[i].update()){
@@ -47,6 +34,20 @@ function runFrame(){
             i--;
         }
     }
+    for(var i = 0; i < cats.length; i++){
+        cats[i].displayCat();
+        if(cats[i].updateCat()){
+            var cats2 = [];
+            for(var j = 0; j < cats.length; j++){
+                if(j != i){
+                    cats2.push(cats[j]);
+                }
+            }
+            cats = cats2;
+            i--;
+        }
+    }
+    
     frame++;
 }
 
@@ -60,7 +61,7 @@ class raindrop{
         this.y = 0;
         this.yv = 3;
         this.state = "falling";
-        this.height = Math.random(50,150);
+        this.height = Math.random()*100+50;
     }
     update(){
         this.y += this.yv;
@@ -70,7 +71,7 @@ class raindrop{
         }
     }
     display(){
-        ctx.fillStyle = "#556677";
+        ctx.fillStyle = "#446688";
         ctx.fillRect(this.x, this.y, 2, this.height);
     }
 }
