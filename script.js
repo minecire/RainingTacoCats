@@ -74,6 +74,7 @@ function runFrame(){
         }
         ctx.drawImage(document.getElementById("bed"), bedX-90, canvas.height*0.8);
         ctx.font = "80px Courier New bold";
+        ctx.fillStyle = "#000000";
         ctx.fillText(score, canvas.width/2, canvas.height*0.1);
         for(var i = 0; i < lives; i++){
             ctx.drawImage(document.getElementById("life"), 50+i*50, 50);
